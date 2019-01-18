@@ -1,0 +1,6 @@
+# debian/bash-completion
+# Bash command completion scripts to install for the ‘dput’ package.
+# Manual page: ‘dh_bash-completion(1)’.
+
+bash-completion/dput.bash    dput
+bash-completion/dcut.bash    dcut

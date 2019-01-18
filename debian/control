@@ -1,0 +1,46 @@
+Source: dput
+Section: devel
+Priority: optional
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+XSBC-Original-Maintainer: Ben Finney <bignose@debian.org>
+Build-Depends-Indep:
+    python3-testtools,
+    python3-testscenarios,
+    python3-httpretty,
+    python3-debian,
+    python3-gpg,
+    python3-setuptools,
+    python3 (>= 3.4),
+    bash-completion,
+    dh-python,
+    debhelper (>= 11)
+Standards-Version: 4.1.3
+VCS-Git: https://anonscm.debian.org/git/users/bignose/debian-full/dput.git
+VCS-Browser: https://anonscm.debian.org/git/users/bignose/debian-full/dput.git
+Homepage: https://packages.debian.org/source/sid/dput
+X-Python3-Version: >= 3.4
+
+Package: dput
+Architecture: all
+Depends:
+    python3-pkg-resources,
+    ${python3:Depends},
+    ${misc:Depends}
+Suggests: openssh-client, python3-paramiko, lintian, mini-dinstall, rsync
+Breaks:
+    devscripts (<< 2.17.0)
+Replaces:
+    devscripts (<< 2.17.0)
+Description: Debian package upload tool
+ dput allows you to put one or more Debian packages into the archive.  This
+ package also includes a dcut utility which can be used to generate and / or
+ upload a commands file for the Debian FTP archive upload queue.
+ .
+ dput includes some tests to verify that the package is policy-compliant.
+ It offers the possibility to run lintian before the upload. It can also
+ run dinstall in dry-run-mode, when having used an appropriate upload method.
+ This is very useful to see if the upload will pass dinstall sanity checks
+ in the next run.
+ .
+ It is intended mainly for Debian maintainers only, although it can
+ also be useful for people maintaining local APT repositories.

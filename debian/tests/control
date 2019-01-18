@@ -1,0 +1,20 @@
+# debian/tests/control
+# Control file for Debian ‘autopkgtests’.
+# Documentation: ‘/usr/share/doc/autopkgtest/README.package-tests.rst.gz’.
+
+Test-Command:
+    dput --version
+Depends:
+    dput
+
+Test-Command:
+    dcut --version
+Depends:
+    dput
+
+
+# Local variables:
+# coding: utf-8
+# mode: conf
+# End:
+# vim: fileencoding=utf-8 filetype=conf :
