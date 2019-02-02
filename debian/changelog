@@ -1,3 +1,10 @@
+dput (1.0.2ubuntu2ev3dev1) bionic; urgency=medium
+
+  * fix atomic upload regression for sftp method
+  * ev3dev takeover
+
+ -- David Lechner <david@lechnology.com>  Sat, 02 Feb 2019 13:39:29 -0600
+
 dput (1.0.2ubuntu2) disco; urgency=medium
 
   * dput/methods/sftp.py:
