@@ -11,9 +11,11 @@
 import errno
 import os
 import os.path
+import random
 import sys
 import socket
 import subprocess
+import time
 
 from ..helper import dputhelper
 
@@ -85,13 +87,17 @@ def copy_file(sftp_client, local_path, remote_path, debug, progress):
                                                   progressf=sys.stdout,
                                                   size=size)
 
-        # TODO: Do atomic?
-        with sftp_client.file(remote_path, "w") as remote_fileobj:
+        tmp_path = '%s.tmp.%.9f.%d.%d' % (remote_path, time.time(),
+                        os.getpid(), random.randint(0, 0x7FFFFFFF))
+
+        with sftp_client.file(tmp_path, "w") as remote_fileobj:
             while True:
                 data = fileobj.read(4096)
                 if not data:
                     break
                 remote_fileobj.write(data)
+
+        sftp_client.rename(tmp_path, remote_path)
 
 
 def upload(fqdn, login, incoming, files, debug, compress, progress=0):
